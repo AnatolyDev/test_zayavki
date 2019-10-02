@@ -1,11 +1,13 @@
 import React from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, NavItem } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+
 import imgLogo from '../../Icons/Logo.png';
 import imgBase from '../../Icons/Base.png';
 import imgZayavki from '../../Icons/Zayavki.png';
 import imgPeople from '../../Icons/People.png';
 import imgClients from '../../Icons/Clients.png';
-import imgActives from '../../Icons/Actives.png';
+import imgAssets from '../../Icons/Assets.png';
 import imgSettings from '../../Icons/Settings.png';
 
 const Menu = () => {
@@ -13,13 +15,13 @@ const Menu = () => {
         <>
             <Nav vertical>
                 <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="#">
                         <img src={imgLogo} alt=''/>
                     </NavLink>
                 </NavItem>
 
                 <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="/base">
                         <div>
                             <img src={imgBase} alt=''/>
                         </div>
@@ -30,7 +32,7 @@ const Menu = () => {
                 </NavItem>
 
                 <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="/zayavki">
                         <div>
                             <img src={imgZayavki} alt=''/>
                         </div>
@@ -41,18 +43,7 @@ const Menu = () => {
                 </NavItem>
 
                 <NavItem>
-                    <NavLink href="#">
-                        <div>
-                            <img src={imgZayavki} alt=''/>
-                        </div>
-                        <div>
-                            Заявки
-                        </div>
-                    </NavLink>
-                </NavItem>
-
-                <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="/people">
                         <div>
                             <img src={imgPeople} alt=''/>
                         </div>
@@ -63,7 +54,7 @@ const Menu = () => {
                 </NavItem>
 
                 <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="/clients">
                         <div>
                             <img src={imgClients} alt=''/>
                         </div>
@@ -74,9 +65,9 @@ const Menu = () => {
                 </NavItem>
 
                 <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="/assets">
                         <div>
-                            <img src={imgActives} alt=''/>
+                            <img src={imgAssets} alt=''/>
                         </div>
                         <div>
                             Активы
@@ -85,7 +76,7 @@ const Menu = () => {
                 </NavItem>
 
                 <NavItem>
-                    <NavLink href="#">
+                    <NavLink to="/settings">
                         <div>
                             <img src={imgSettings} alt=''/>
                         </div>
