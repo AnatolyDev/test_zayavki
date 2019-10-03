@@ -14,12 +14,24 @@
   height: 70px;
   justify-content: center;
   text-align: center;
+}
+
+.nav li:hover {
+  background-color: seagreen;
+}
+
+.nav a {
+  color: white;
+  font-size: 8pt;
+}
+
+.nav a:hover {
+  color: white;
   text-decoration: none;
 }
 
-.nav-link {
-  color: white;
-  font-size: 8pt;
+.nav .active {
+  background-color: blueviolet;
 }
 
 .rightarea {
