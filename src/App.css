@@ -17,7 +17,7 @@
 }
 
 .nav li:hover {
-  background-color: seagreen;
+  background-color: rgb(0,44,73);
 }
 
 .nav a {
@@ -31,7 +31,7 @@
 }
 
 .nav .active {
-  background-color: blueviolet;
+  background-color: rgb(0,44,73);
 }
 
 .rightarea {

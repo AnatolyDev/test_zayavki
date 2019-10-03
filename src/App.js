@@ -20,11 +20,11 @@ function App() {
       </div>
       <div className="rightarea">
         <div className="header">
-          Заголовок
+          <Header />
         </div>
         <div className="content">
           <Switch>
-            <Route path='/' exact component={Base}/>
+            <Route path='/base' exact component={Base}/>
             <Route path='/zayavki' component={Zayavki}/>
             <Route path='/people' component={People}/>
             <Route path='/clients' component={Clients}/>
