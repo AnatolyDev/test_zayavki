@@ -3,9 +3,9 @@ import './style.css';
 
 const Header = () => {
     return (
-        <form action="" method="post" class="search">
-            <input type="search" name="" placeholder="поиск" class="input" />
-            <input type="submit" name="" value="" class="submit" />
+        <form action="" method="post" className="search">
+            <input type="search" name="" placeholder="поиск" className="input" />
+            <input type="submit" name="" value="" className="submit" />
         </form>
     )
 }

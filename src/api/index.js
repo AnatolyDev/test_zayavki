@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const tenantguid = "2e23783c-32dc-421f-97e2-9d34e536f5e1";
+const tenantguid = "f5bc8d5c-c316-493d-9962-3c89161968d0";
 
 const instance =  axios.create(
         {
-            baseURL: 'http://intravision-task.test01.intravision.ru/api',
+            baseURL: 'http://intravision-task.test01.intravision.ru',
             timeout : 5000,
             headers: {
                 'Accept': 'application/json',
@@ -15,6 +15,7 @@ const instance =  axios.create(
 
 export const zayavkiAPI = {
     getZayavki() {
-
+        // получим список всех заявок
+        return instance.get('/odata/tasks?tenantguid='+tenantguid)
     }
 }
