@@ -4,20 +4,55 @@ import { zayavkiAPI } from '../../api';
 import { Table } from 'reactstrap';
 
 import Spinner from '../Spinner';
-import './style.css';
+
+import NewZayavka from './NewZayavka';
 
 function Zayavki() {
+
+    // справочник статусов
+    const [statuses, setStatuses] = useState([]);
+
+    // справочник приоритетов
+    const [priorities, setPriorities] = useState([]);
 
     // список заявок
     const [zayavokList, setZayavokList] = useState([]);
     // хук для показа спиннера
     const [showSpinner, setShowSpinner] = useState(true);
 
+    // загружаем список статусов
+    useEffect(
+        () => {
+            async function getStatuses() {
+                const st = await zayavkiAPI.getStatuses();
+                console.log('Загружаем справочник статусов');
+                console.log(st.data);
+                setStatuses(st.data);
+            };
+            getStatuses();
+        },
+        []
+    )
+
+    // загружаем список приоритетов
+    useEffect(
+        () => {
+            async function getStatuses() {
+                const pr = await zayavkiAPI.getStatuses();
+                console.log('Загружаем справочник приоритетов');
+                console.log(pr.data);
+                setStatuses(pr.data);
+            };
+            getStatuses();
+        },
+        []
+    )
+
     useEffect(
         () => {
             async function getZayavki() {
-                console.log('Запрашиваем заявки');
                 const zList = await zayavkiAPI.getZayavki();
+                console.log('Запрашиваем заявки');
                 console.log(zList.data.value);
                 setZayavokList(zList.data.value);
                 setShowSpinner(false); // скрываем спиннер
@@ -30,6 +65,7 @@ function Zayavki() {
     return (
         <div className='table-area'>
             {showSpinner && <Spinner />}
+            
             <Table>
                 <thead>
                     <tr>
@@ -46,7 +82,11 @@ function Zayavki() {
                                 <tr key={zayavka.id}>
                                     <td>{zayavka.id}</td>
                                     <td>{zayavka.name}</td>
-                                    <td>{zayavka.statusName}</td>
+                                    <td>
+                                        <div style={{borderRadius: '10px', textAlign: 'center', padding: '0px 7px', color: 'white', backgroundColor: zayavka.statusRgb}}>
+                                            {zayavka.statusName}
+                                        </div>
+                                    </td>
                                     <td>{zayavka.executorName}</td>
                                 </tr>
                             )

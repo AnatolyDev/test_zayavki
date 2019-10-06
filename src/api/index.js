@@ -17,5 +17,15 @@ export const zayavkiAPI = {
     getZayavki() {
         // получим список всех заявок
         return instance.get('/odata/tasks?tenantguid='+tenantguid)
-    }
+    },
+
+    // справочник приоритетов
+    getPriorities() {
+        return instance.get(`/api/${tenantguid}/Priorities`)
+    },
+
+    // справочник статусов
+    getStatuses() {
+        return instance.get(`/api/${tenantguid}/Statuses`)
+    },
 }
