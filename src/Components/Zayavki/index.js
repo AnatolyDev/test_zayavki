@@ -20,6 +20,9 @@ function Zayavki() {
     // хук для показа спиннера
     const [showSpinner, setShowSpinner] = useState(true);
 
+    // окно создания заявки
+    const [showNew, setShowNew] = useState(false);
+
     // загружаем список статусов
     useEffect(
         () => {
@@ -66,9 +69,9 @@ function Zayavki() {
         <>
             {showSpinner && <Spinner />}
             <div className='zayavki-area'>
-                <div>
+                <div className='column1'>
                     <div className='button-area'>
-                        <button>
+                        <button onClick = {() => setShowNew(true)}>
                             Создать заявку
                         </button>
                     </div>
@@ -104,9 +107,12 @@ function Zayavki() {
                         </Table>
                     </div>
                 </div>
-                <div className='newzayavka'>
-                    <NewZayavka />
-                </div>
+
+                {showNew && 
+                    <div className='column2'>
+                        <NewZayavka setClose={() => setShowNew(false)}/>
+                    </div>
+                }
             </div>
         </>
     )

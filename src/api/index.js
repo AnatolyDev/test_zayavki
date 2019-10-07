@@ -28,4 +28,39 @@ export const zayavkiAPI = {
     getStatuses() {
         return instance.get(`/api/${tenantguid}/Statuses`)
     },
+
+    // справочник типов задач
+    getTaskTypes() {
+        return instance.get(`/api/${tenantguid}/TaskTypes`)
+    },
+
+    // справочник статусов
+    getStatuses() {
+        return instance.get(`/api/${tenantguid}/Statuses`)
+    },
+
+    // справочник приортетов
+    getPriorities() {
+        return instance.get(`/api/${tenantguid}/Priorities`)
+    },
+
+    // справочник сервисов
+    getServices() {
+        return instance.get(`/api/${tenantguid}/Services`)
+    },
+
+    // справочник тегов
+    getTags() {
+        return instance.get(`/api/${tenantguid}/Tags`)
+    },
+
+    // справочник пользователей
+    getUsers() {
+        return instance.get(`/api/${tenantguid}/Users`)
+    },
+
+    // справочник групп пользователей
+    getUserGroups() {
+        return instance.get(`/api/${tenantguid}/UserGroups`)
+    },
 }

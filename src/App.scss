@@ -1,6 +1,14 @@
 $headerHeight : 65px;
 $buttonAreaHeight : 50px;
 
+@mixin buttonRadius ($clr, $bgclr, $r) {
+    button {
+        color: $clr;
+        background-color: $bgclr;
+        border-radius: $r;
+    }
+}
+
 .flex-container {
     display: flex;
     flex-flow: row nowrap;
@@ -134,54 +142,86 @@ $buttonAreaHeight : 50px;
 .zayavki-area {
     display: flex;
     flex-flow: row nowrap;
-}
 
-.button-area {
-    height: $buttonAreaHeight;
-}
+    .column1 {
 
-.table-area {    
-    flex-grow: 1;
-    height: calc(#{100vh} - #{$headerHeight} - #{$buttonAreaHeight});
-    overflow-y: auto;
-
-    th {
-        position: sticky;
-        top: 0;
-    }
-}
-
-.table {
-
-    border-collapse: collapse;
-    width: 100%;
-
-    thead {
-        color: rgba(64, 65, 71, 255);
-    }
-    tbody {
-        color: rgba(82, 84, 96, 221);
-    }
-
-    th, td {
-        padding: 8px 16px;
-    }
-
-    th {
-        background: #eee;
-    }
-}
-
-.newzayavka {
-    position: absolute;
-    right: 0;
-    height: 80vh;
-    z-index: 20;
-    display: flex;
-    flex-flow: column nowrap;
-
-    div {
         flex-grow: 1;
-        background-color: red;
+
+        .button-area {
+            height: $buttonAreaHeight;
+            padding-top: 12px;
+            padding-left: 100px;
+            @include buttonRadius(white, blue, 15px);
+        }
+
+        .table-area {    
+            flex-grow: 1;
+            height: calc(#{100vh} - #{$headerHeight} - #{$buttonAreaHeight});
+            overflow-y: auto;
+        
+            th {
+                position: sticky;
+                top: 0;
+            }
+
+            .table {
+
+                border-collapse: collapse;
+                width: 100%;
+            
+                thead {
+                    color: rgba(64, 65, 71, 255);
+                }
+                tbody {
+                    color: rgba(82, 84, 96, 221);
+                }
+            
+                th, td {
+                    padding: 8px 16px;
+                }
+            
+                th {
+                    background: #eee;
+                }
+            }
+        }
+    }
+
+    .column2 {
+        z-index: 10;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+
+        div {
+            flex-grow: 1;
+            background-color: rgb(249,249,250);
+
+            .header {
+                height: 60px;
+                background-color: rgb(26,72,118);
+                color: white;
+                padding-top: 20px;
+                padding-left: 40px;
+
+                button {
+                    float: right;
+                    background-color: rgb(26,72,118);
+                    color: #fff;
+                    border: 0;
+                    font-size: 18pt;
+                }
+            }
+
+            .content {
+                margin: 5%;
+            }
+
+            .bsave {
+                margin: 5%;
+                @include buttonRadius(white, blue, 10px);
+            }
+        }
     }
 }
