@@ -63,38 +63,52 @@ function Zayavki() {
     )
 
     return (
-        <div className='table-area'>
+        <>
             {showSpinner && <Spinner />}
-            
-            <Table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Название</th>
-                        <th>Статус</th>
-                        <th>Исполнитель</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        zayavokList.map(
-                            zayavka => (
-                                <tr key={zayavka.id}>
-                                    <td>{zayavka.id}</td>
-                                    <td>{zayavka.name}</td>
-                                    <td>
-                                        <div style={{borderRadius: '10px', textAlign: 'center', padding: '0px 7px', color: 'white', backgroundColor: zayavka.statusRgb}}>
-                                            {zayavka.statusName}
-                                        </div>
-                                    </td>
-                                    <td>{zayavka.executorName}</td>
+            <div className='zayavki-area'>
+                <div>
+                    <div className='button-area'>
+                        <button>
+                            Создать заявку
+                        </button>
+                    </div>
+                    <div className='table-area'>
+                        
+                        <Table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th>Статус</th>
+                                    <th>Исполнитель</th>
                                 </tr>
-                            )
-                        )
-                    }
-                </tbody>
-            </Table>
-        </div>
+                            </thead>
+                            <tbody>
+                                {
+                                    zayavokList.map(
+                                        zayavka => (
+                                            <tr key={zayavka.id}>
+                                                <td>{zayavka.id}</td>
+                                                <td>{zayavka.name}</td>
+                                                <td>
+                                                    <div style={{borderRadius: '10px', textAlign: 'center', padding: '0px 7px', color: 'white', backgroundColor: zayavka.statusRgb}}>
+                                                        {zayavka.statusName}
+                                                    </div>
+                                                </td>
+                                                <td>{zayavka.executorName}</td>
+                                            </tr>
+                                        )
+                                    )
+                                }
+                            </tbody>
+                        </Table>
+                    </div>
+                </div>
+                <div className='newzayavka'>
+                    <NewZayavka />
+                </div>
+            </div>
+        </>
     )
 }
 

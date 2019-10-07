@@ -15,8 +15,10 @@ import Settings from './Components/Settings';
 function App() {
   return (
     <div className="flex-container">
-      <div className="menu">
-        <Menu />
+      <div className="menuBlock">
+        <div className="menu">
+          <Menu />
+        </div>
       </div>
       <div className="rightarea">
         <div className="header">
