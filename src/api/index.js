@@ -63,4 +63,9 @@ export const zayavkiAPI = {
     getUserGroups() {
         return instance.get(`/api/${tenantguid}/UserGroups`)
     },
+
+    // получить заявку по id
+    getTask(id) {
+        return instance.get(`/api/${tenantguid}/Tasks/${id}`)
+    }
 }

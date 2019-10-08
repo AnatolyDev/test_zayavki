@@ -224,4 +224,70 @@ $buttonAreaHeight : 50px;
             }
         }
     }
+
+    .column3 {
+        z-index: 10;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+
+        div {
+            flex-grow: 1;
+            background-color: rgb(249,249,250);
+
+            .header {
+                display: flex;
+                flex-flow: row nowrap;
+                height: 60px;
+                background-color: rgb(26,72,118);
+                color: white;
+                padding-top: 20px;
+                padding-left: 40px;
+
+                .id {
+                    flex-grow: 1;
+                    background-color: rgb(26,72,118);
+                }
+                .title {
+                    flex-grow: 2;
+                    background-color: rgb(26,72,118);
+                    margin: 0 20px;
+                    p {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 300px;
+                    }
+                }
+                button {
+                    flex-basis: 20px;
+                    background-color: rgb(26,72,118);
+                    color: #fff;
+                    border: 0;
+                    font-size: 18pt;
+                }
+            }
+
+            .zbody {
+
+                display: flex;
+                flex-flow: row nowrap;
+
+                .leftcolumn {
+                    margin: 3%;
+                    flex-grow: 1;
+
+                    .bsave {
+                        margin: 5%;
+                        @include buttonRadius(white, blue, 10px);
+                    }
+                }
+
+                .rightcolumn {
+                    flex-basis: 20%;
+                }
+            }
+        }
+    }
 }

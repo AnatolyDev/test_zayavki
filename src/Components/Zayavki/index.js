@@ -6,6 +6,7 @@ import { Table } from 'reactstrap';
 import Spinner from '../Spinner';
 
 import NewZayavka from './NewZayavka';
+import EditZayavka from './EditZayavka';
 
 function Zayavki() {
 
@@ -22,6 +23,10 @@ function Zayavki() {
 
     // окно создания заявки
     const [showNew, setShowNew] = useState(false);
+
+    // окно редактирования заявки
+    // в хуке хранится id заявки
+    const [idForEdit, setIdForEdit] = useState(undefined);
 
     // загружаем список статусов
     useEffect(
@@ -90,7 +95,7 @@ function Zayavki() {
                                 {
                                     zayavokList.map(
                                         zayavka => (
-                                            <tr key={zayavka.id}>
+                                            <tr key={zayavka.id} onClick={() => setIdForEdit(zayavka.id)}>
                                                 <td>{zayavka.id}</td>
                                                 <td>{zayavka.name}</td>
                                                 <td>
@@ -110,7 +115,14 @@ function Zayavki() {
 
                 {showNew && 
                     <div className='column2'>
-                        <NewZayavka setClose={() => setShowNew(false)}/>
+                        <NewZayavka setClose={() => setShowNew(false)} />
+                    </div>
+                }
+
+                {
+                    idForEdit &&
+                    <div className='column3'>
+                        <EditZayavka id={idForEdit} setClose={() => setIdForEdit(undefined)}/>
                     </div>
                 }
             </div>
