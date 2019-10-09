@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Input } from 'reactstrap';
 import { zayavkiAPI } from '../../../api';
 import Spinner from '../../Spinner';
+import Comment from './Comment';
 
 const EditZayavka = ({id, statuses, users, setClose}) => {
 
@@ -24,20 +25,47 @@ const EditZayavka = ({id, statuses, users, setClose}) => {
             async function getZayavkaInfo() {
                 const z = await zayavkiAPI.getTask(id);
                 setZayavka(z.data);
+                
                 // выбранный статус
                 setStatusID(z.data.statusId);
                 // исполнитель
                 setExecutorID(z.data.executorId);
             };
             getZayavkaInfo();
+            
         },
         [id]
     )
 
     const saveChanges = () => {
         async function putTask() {
-            
+            const dto = {
+                "id" : id,
+                "name" : zayavka.name,
+                "description" : zayavka.description,
+                "comment" : '',
+                "price" : zayavka.price,
+                "taskTypeId" : zayavka.taskTypeId,
+                "statusId" : statusID,
+                "priorityId" : zayavka.priorityId,
+                "serviceId" : zayavka.serviceId,
+                "resolutionDatePlain" : zayavka.resolutionDatePlan,
+                "tags" : zayavka.tags,
+                "initiatorId" : zayavka.initiatorId,
+                "executorId" : executorID,
+                "executorGroupId" : zayavka.executorGroupId
+            }
+            console.log(dto);
+            await zayavkiAPI.putTask(dto)
+            console.log('Сохранено');
         }
+        try {
+            putTask();
+            
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 
     return (
@@ -64,15 +92,27 @@ const EditZayavka = ({id, statuses, users, setClose}) => {
                         <div className='leftcolumn'>
                             Описание
                             <div>
-                                <textarea>
+                                <textarea value=''>
                                     {zayavka.description}
                                 </textarea>
                             </div>
                             <div className='bsave'>
-                                <button>
+                                <button onClick={saveChanges}>
                                     Сохранить
                                 </button>
                             </div>
+
+                            <hr />
+                            <div>
+                                <h5>Комментарии</h5>
+                            </div>
+                            {
+                                zayavka.lifetimeItems.map(
+                                    comment => (
+                                        <Comment key={comment.id} commentBody={comment}/>
+                                    )
+                                )
+                            }
                         </div>
                         <div className='rightcolumn'>
                             <div>

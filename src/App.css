@@ -268,6 +268,13 @@
               color: white;
               background-color: blue;
               border-radius: 10px; }
+          .zayavki-area .column3 div .zbody .leftcolumn .comment {
+            margin: 5%; }
+            .zayavki-area .column3 div .zbody .leftcolumn .comment .comment-date {
+              margin-left: 8%; }
+            .zayavki-area .column3 div .zbody .leftcolumn .comment .comment-body {
+              margin-left: 8%;
+              background-color: #e3e9f4; }
         .zayavki-area .column3 div .zbody .rightcolumn {
           -ms-flex-preferred-size: 20%;
           flex-basis: 20%; }

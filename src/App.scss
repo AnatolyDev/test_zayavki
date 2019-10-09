@@ -282,6 +282,19 @@ $buttonAreaHeight : 50px;
                         margin: 5%;
                         @include buttonRadius(white, blue, 10px);
                     }
+
+                    .comment {
+                        margin: 5%;
+
+                        .comment-date {
+                            margin-left: 8%;
+                        }
+
+                        .comment-body {
+                            margin-left: 8%;
+                            background-color: rgb(227,233,244);
+                        }
+                    }
                 }
 
                 .rightcolumn {
