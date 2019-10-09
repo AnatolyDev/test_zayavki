@@ -13,8 +13,8 @@ function Zayavki() {
     // справочник статусов
     const [statuses, setStatuses] = useState([]);
 
-    // справочник приоритетов
-    const [priorities, setPriorities] = useState([]);
+    // справочник пользователей
+    const [users, setUsers] = useState([]);
 
     // список заявок
     const [zayavokList, setZayavokList] = useState([]);
@@ -42,16 +42,16 @@ function Zayavki() {
         []
     )
 
-    // загружаем список приоритетов
+    // загружаем список пользователей
     useEffect(
         () => {
-            async function getStatuses() {
-                const pr = await zayavkiAPI.getStatuses();
-                console.log('Загружаем справочник приоритетов');
-                console.log(pr.data);
-                setStatuses(pr.data);
+            async function getUsers() {
+                const u = await zayavkiAPI.getUsers();
+                console.log('Загружаем справочник пользователей');
+                console.log(u.data);
+                setUsers(u.data);
             };
-            getStatuses();
+            getUsers();
         },
         []
     )
@@ -122,7 +122,7 @@ function Zayavki() {
                 {
                     idForEdit &&
                     <div className='column3'>
-                        <EditZayavka id={idForEdit} setClose={() => setIdForEdit(undefined)}/>
+                        <EditZayavka id={idForEdit} statuses={statuses} users={users} setClose={() => setIdForEdit(undefined)}/>
                     </div>
                 }
             </div>

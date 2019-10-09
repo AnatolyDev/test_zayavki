@@ -67,5 +67,10 @@ export const zayavkiAPI = {
     // получить заявку по id
     getTask(id) {
         return instance.get(`/api/${tenantguid}/Tasks/${id}`)
+    },
+
+    // внести изменения в заявку
+    putTask(dto) {
+        return instance.put(`/api/${tenantguid}/Tasks`, dto)
     }
 }
