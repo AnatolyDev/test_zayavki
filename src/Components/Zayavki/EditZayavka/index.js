@@ -5,7 +5,7 @@ import { zayavkiAPI } from '../../../api';
 import Spinner from '../../Spinner';
 import Comment from './Comment';
 
-const EditZayavka = ({id, statuses, users, setClose}) => {
+const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
 
     // заявка
     const [zayavka, setZayavka] = useState(undefined);
@@ -50,14 +50,15 @@ const EditZayavka = ({id, statuses, users, setClose}) => {
                 "priorityId" : zayavka.priorityId,
                 "serviceId" : zayavka.serviceId,
                 "resolutionDatePlain" : zayavka.resolutionDatePlan,
-                "tags" : zayavka.tags,
+                "tags" : zayavka.tags.map(t => t.id),
                 "initiatorId" : zayavka.initiatorId,
                 "executorId" : executorID,
                 "executorGroupId" : zayavka.executorGroupId
             }
-            console.log(dto);
-            await zayavkiAPI.putTask(dto)
+            await zayavkiAPI.putTask(dto);
             console.log('Сохранено');
+            setClose();
+            forceUpdFunc();
         }
         try {
             putTask();

@@ -10,6 +10,9 @@ import EditZayavka from './EditZayavka';
 
 function Zayavki() {
 
+    // принудительное обновление
+    const [forceUpd, setForceUpd] = useState(false);
+
     // справочник статусов
     const [statuses, setStatuses] = useState([]);
 
@@ -67,7 +70,7 @@ function Zayavki() {
             };
             getZayavki()
         },
-        []
+        [forceUpd]
     )
 
     return (
@@ -122,7 +125,7 @@ function Zayavki() {
                 {
                     idForEdit &&
                     <div className='column3'>
-                        <EditZayavka id={idForEdit} statuses={statuses} users={users} setClose={() => setIdForEdit(undefined)}/>
+                        <EditZayavka id={idForEdit} statuses={statuses} users={users} setClose={() => setIdForEdit(undefined)} forceUpdFunc={() => setForceUpd(!forceUpd)} />
                     </div>
                 }
             </div>
