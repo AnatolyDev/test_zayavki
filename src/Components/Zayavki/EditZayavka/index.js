@@ -43,7 +43,7 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
                 "id" : id,
                 "name" : zayavka.name,
                 "description" : zayavka.description,
-                "comment" : '',
+                "comment" : comment.trim(),
                 "price" : zayavka.price,
                 "taskTypeId" : zayavka.taskTypeId,
                 "statusId" : statusID,
@@ -67,6 +67,12 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
             console.log(error)
         }
         
+    }
+
+    function sortComments(a,b) {
+        const d0 = new Date(a.createdAt);
+        const d1 = new Date(b.createdAt);
+        return d1 - d0;
     }
 
     return (
@@ -93,8 +99,16 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
                         <div className='leftcolumn'>
                             Описание
                             <div>
-                                <textarea value=''>
+                                <textarea >
                                     {zayavka.description}
+                                </textarea>
+                            </div>
+                            <div>
+                                Добавление комментария:
+                            </div>
+                            <div>
+                                <textarea value={comment} onChange = {(e) => setComment(e.target.value)}>
+
                                 </textarea>
                             </div>
                             <div className='bsave'>
@@ -105,10 +119,10 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
 
                             <hr />
                             <div>
-                                <h5>Комментарии</h5>
+                                <h5>Комментарии:</h5>
                             </div>
                             {
-                                zayavka.lifetimeItems.map(
+                                zayavka.lifetimeItems.sort(sortComments).map(
                                     comment => (
                                         <Comment key={comment.id} commentBody={comment}/>
                                     )
@@ -116,7 +130,7 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
                             }
                         </div>
                         <div className='rightcolumn'>
-                            <div>
+                            <div className='subitem'>
                                 <ul>
                                     <li style={{color: zayavka.statusRgb}}>
                                         <Input type="select" name="selectStatus" value={statusID} onChange={e => {setStatusID(e.target.value)}}>
@@ -131,7 +145,7 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
                                     </li>
                                 </ul>
                             </div>
-                            <div>
+                            <div className='subitem'>
                                 <div>
                                     Заявитель
                                 </div>
@@ -139,15 +153,8 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
                                     <b>{zayavka.initiatorName}</b>
                                 </div>
                             </div>
-                            <div>
-                                <div>
-                                    Создана
-                                </div>
-                                <div>
-                                    <b>{zayavka.createdAt}</b>
-                                </div>
-                            </div>
-                            <div>
+                        
+                            <div className='subitem'>
                                 <div>
                                     Исполнитель
                                 </div>
@@ -163,12 +170,24 @@ const EditZayavka = ({id, statuses, users, setClose, forceUpdFunc}) => {
                                         </Input>
                                 </div>
                             </div>
-                            <div>
+                            <div className='subitem'>
                                 <div>
                                     Приоритет
                                 </div>
                                 <div>
                                     <b>{zayavka.priorityName}</b>
+                                </div>
+                            </div>
+                            <div className='subitem'>
+                                <div>
+                                    Срок
+                                </div>
+                                <div>
+                                    <b>
+                                        {(new Date(zayavka.resolutionDatePlan)).toLocaleDateString('ru', {
+                                                                            day: 'numeric', month: 'short', year: 'numeric'
+                                                                            }).replace(/ /g, '-')}
+                                    </b>
                                 </div>
                             </div>
                         </div>

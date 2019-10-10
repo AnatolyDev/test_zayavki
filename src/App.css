@@ -256,7 +256,9 @@
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap; }
+        flex-flow: row nowrap;
+        height: calc(100vh - 65px - 50px - 60px);
+        overflow-y: auto; }
         .zayavki-area .column3 div .zbody .leftcolumn {
           margin: 3%;
           -webkit-box-flex: 1;
@@ -274,7 +276,12 @@
               margin-left: 8%; }
             .zayavki-area .column3 div .zbody .leftcolumn .comment .comment-body {
               margin-left: 8%;
+              margin-top: 15px;
               background-color: #e3e9f4; }
+          .zayavki-area .column3 div .zbody .leftcolumn textarea {
+            width: 100%; }
         .zayavki-area .column3 div .zbody .rightcolumn {
           -ms-flex-preferred-size: 20%;
           flex-basis: 20%; }
+          .zayavki-area .column3 div .zbody .rightcolumn .subitem {
+            margin: 10px 0; }

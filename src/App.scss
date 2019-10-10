@@ -236,10 +236,12 @@ $buttonAreaHeight : 50px;
             flex-grow: 1;
             background-color: rgb(249,249,250);
 
+            $headerEditHeight : 60px;
+
             .header {
                 display: flex;
                 flex-flow: row nowrap;
-                height: 60px;
+                height: $headerEditHeight;
                 background-color: rgb(26,72,118);
                 color: white;
                 padding-top: 20px;
@@ -273,6 +275,8 @@ $buttonAreaHeight : 50px;
 
                 display: flex;
                 flex-flow: row nowrap;
+                height: calc(#{100vh} - #{$headerHeight} - #{$buttonAreaHeight} - #{$headerEditHeight});
+                overflow-y: auto;
 
                 .leftcolumn {
                     margin: 3%;
@@ -292,13 +296,21 @@ $buttonAreaHeight : 50px;
 
                         .comment-body {
                             margin-left: 8%;
+                            margin-top: 15px;
                             background-color: rgb(227,233,244);
                         }
+                    }
+
+                    textarea {
+                        width: 100%;
                     }
                 }
 
                 .rightcolumn {
                     flex-basis: 20%;
+                    .subitem {
+                        margin: 10px 0;
+                    }
                 }
             }
         }
