@@ -72,5 +72,10 @@ export const zayavkiAPI = {
     // внести изменения в заявку
     putTask(dto) {
         return instance.put(`/api/${tenantguid}/Tasks`, dto)
-    }
+    },
+
+    // создать новую заявку
+    postTask(dto) {
+        return instance.post(`/api/${tenantguid}/Tasks`, dto)
+    },
 }

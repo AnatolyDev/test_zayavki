@@ -73,13 +73,23 @@ function Zayavki() {
         [forceUpd]
     )
 
+    const createZayavka = () => {
+        setShowNew(true);
+        setIdForEdit(undefined);
+    }
+
+    const editZayavka = id => {
+        setIdForEdit(id);
+        setShowNew(false);
+    }
+
     return (
         <>
             {showSpinner && <Spinner />}
             <div className='zayavki-area'>
                 <div className='column1'>
                     <div className='button-area'>
-                        <button onClick = {() => setShowNew(true)}>
+                        <button onClick = {createZayavka}>
                             Создать заявку
                         </button>
                     </div>
@@ -98,7 +108,7 @@ function Zayavki() {
                                 {
                                     zayavokList.map(
                                         zayavka => (
-                                            <tr key={zayavka.id} onClick={() => setIdForEdit(zayavka.id)}>
+                                            <tr key={zayavka.id} onClick={() => editZayavka(zayavka.id)}>
                                                 <td>{zayavka.id}</td>
                                                 <td>{zayavka.name}</td>
                                                 <td>
@@ -118,7 +128,11 @@ function Zayavki() {
 
                 {showNew && 
                     <div className='column2'>
-                        <NewZayavka setClose={() => setShowNew(false)} />
+                        <NewZayavka
+                            setClose={() => setShowNew(false)}
+                            forceUpdFunc={() => setForceUpd(!forceUpd)}
+                            editNewZayavka={(id) => editZayavka(id)}
+                        />
                     </div>
                 }
 
