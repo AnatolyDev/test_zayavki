@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Menu from './Components/Menu';
 import Header from './Components/Header';
@@ -11,6 +11,8 @@ import People from './Components/People';
 import Clients from './Components/Clients';
 import Assets from './Components/Assets';
 import Settings from './Components/Settings';
+
+import NotFound from './Components/NotFound';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
             <Route path='/clients' component={Clients}/>
             <Route path='/assets' component={Assets}/>
             <Route path='/settings' component={Settings}/>
+            <Redirect from='/' to='/base' />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </div>
